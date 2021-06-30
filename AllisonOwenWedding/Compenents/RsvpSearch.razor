@@ -1,0 +1,8 @@
+﻿<EditForm Model="Request" OnValidSubmit="@OnSubmitAsync">
+    <DataAnnotationsValidator />
+    <div>
+        <label for="fullName">Full Name</label>
+        <InputText id="fullName" @bind-Value="Request.FullName" />
+    </div>
+    <button type="submit">Submit</button>
+</EditForm>

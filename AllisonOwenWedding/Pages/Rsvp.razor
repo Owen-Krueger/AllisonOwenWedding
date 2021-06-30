@@ -1,0 +1,10 @@
+﻿@page "/rsvp"
+
+@if (WeddingInvitee == null)
+{
+    <AllisonOwenWedding.Compenents.RsvpSearch SetWeddingInvitee="SetWeddingInvitee" />
+}
+else
+{
+    <AllisonOwenWedding.Compenents.RsvpForm WeddingInvitee="WeddingInvitee" ResetForm="ResetForm" />
+}

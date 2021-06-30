@@ -1,0 +1,12 @@
+﻿<p>We found you!</p>
+<EditForm Model="WeddingInvitee" OnValidSubmit="UpdateInviteeAsync">
+    <div>
+        <label for="accepted">Accept</label>
+        <InputCheckbox id="accepted" @bind-Value="WeddingInvitee.Accepted" />
+    </div>
+    <div>
+        <label for="numberOfGuests">Number of Guests</label>
+        <InputNumber id="numberOfGuests" @bind-Value="WeddingInvitee.NumberOfGuests" />
+    </div>
+    <button type="submit">Submit</button>
+</EditForm>
