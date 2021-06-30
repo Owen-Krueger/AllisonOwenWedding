@@ -24,6 +24,7 @@ namespace AllisonOwenWedding.Compenents
         /// </summary>
         private async Task UpdateInviteeAsync()
         {
+            WeddingInvitee.Completed = true;
             await WeddingService.UpdateInviteeAsync();
             await ResetForm.InvokeAsync();
         }

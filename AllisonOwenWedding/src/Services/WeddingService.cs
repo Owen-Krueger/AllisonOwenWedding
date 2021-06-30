@@ -18,12 +18,6 @@ namespace AllisonOwenWedding.Services
         }
 
         /// <inheritdoc />
-        public async Task UpdateInviteeAsync()
-        {
-            await _weddingEntities.SaveChangesAsync();
-        }
-
-        /// <inheritdoc />
         public WeddingInvitee FindInvitee(string fullName)
         {
             var invitee = _weddingEntities.WeddingInvitees
@@ -34,6 +28,12 @@ namespace AllisonOwenWedding.Services
                 ).FirstOrDefault();
 
             return invitee;
+        }
+
+        /// <inheritdoc />
+        public async Task UpdateInviteeAsync()
+        {
+            await _weddingEntities.SaveChangesAsync();
         }
     }
 }
