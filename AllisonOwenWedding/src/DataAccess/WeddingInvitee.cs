@@ -27,7 +27,7 @@ namespace AllisonOwenWedding.DataAccess
         /// <summary>
         /// The number of guests coming with the invitee.
         /// </summary>
-        public int NumberOfGuests { get; set; }
+        public int GuestsComing { get; set; }
 
         /// <summary>
         /// The list of identifiers for this invitee.

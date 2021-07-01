@@ -2,6 +2,9 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #171717;
+    color: #ffa1ac;
+    color: white;
 }
 
 a, .btn-link {
@@ -48,3 +51,25 @@ a, .btn-link {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+.main-layout {
+
+}
+
+.main-layout-heading {
+    text-align: center;
+}
+
+.navigation-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.navigation-list li {
+    list-style-type: none;
+}
+
+.navigation-list a {
+    text-decoration: none;
+}
