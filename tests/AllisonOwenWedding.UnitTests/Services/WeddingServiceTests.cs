@@ -21,7 +21,8 @@ namespace AllisonOwenWedding.UnitTests.Services
                 Id = 1,
                 Completed = true,
                 Accepted = true,
-                NumberOfGuests = 2
+                GuestsExpected = 2,
+                GuestsComing = 2
             };
             InviteeIdentifier inviteeIdentifier = new()
             {
@@ -47,10 +48,7 @@ namespace AllisonOwenWedding.UnitTests.Services
             var mock = new AutoMocker();
             WeddingInvitee invitee = new()
             {
-                Id = 1,
-                Completed = true,
-                Accepted = true,
-                NumberOfGuests = 2
+                Id = 1
             };
             InviteeIdentifier inviteeIdentifier = new()
             {
@@ -79,7 +77,7 @@ namespace AllisonOwenWedding.UnitTests.Services
                 Id = 1,
                 Completed = true,
                 Accepted = false,
-                NumberOfGuests = 2
+                GuestsComing = 2
             };
             var options = new DbContextOptionsBuilder<WeddingEntities>()
                 .UseInMemoryDatabase(databaseName: $"{nameof(UpdateInviteeAsync_InviteeUpdated_ChangesSaved)}")
@@ -90,11 +88,11 @@ namespace AllisonOwenWedding.UnitTests.Services
             mock.Use<IWeddingEntities>(dataContext);
             var weddingService = mock.CreateInstance<WeddingService>();
             invitee.Accepted = true;
-            invitee.NumberOfGuests = 0;
+            invitee.GuestsComing = 0;
             await weddingService.UpdateInviteeAsync();
             var updatedInvitee = await dataContext.WeddingInvitees.FirstAsync();
             Assert.IsTrue(updatedInvitee.Accepted);
-            Assert.AreEqual(0, updatedInvitee.NumberOfGuests);
+            Assert.AreEqual(0, updatedInvitee.GuestsComing);
         }
     }
 }
