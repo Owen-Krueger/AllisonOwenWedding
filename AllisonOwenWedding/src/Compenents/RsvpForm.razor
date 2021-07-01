@@ -5,8 +5,13 @@
         <InputCheckbox id="accepted" @bind-Value="WeddingInvitee.Accepted" />
     </div>
     <div>
-        <label for="numberOfGuests">Number of Guests</label>
-        <InputNumber id="numberOfGuests" @bind-Value="WeddingInvitee.GuestsComing" />
+        <label for="numberOfGuests">Additional Guests</label>
+        <InputSelect @bind-Value="WeddingInvitee.GuestsComing">
+            @for(int i = 0; i <= WeddingInvitee.GuestsExpected; i++)
+            {
+                <option value="@i">+@i</option>
+            }
+        </InputSelect>
     </div>
     <button type="submit">Submit</button>
 </EditForm>

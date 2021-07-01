@@ -25,6 +25,11 @@ namespace AllisonOwenWedding.DataAccess
         public bool Accepted { get; set; }
 
         /// <summary>
+        /// The number of guests we expect may come.
+        /// </summary>
+        public int GuestsExpected { get; set; }
+
+        /// <summary>
         /// The number of guests coming with the invitee.
         /// </summary>
         public int GuestsComing { get; set; }
