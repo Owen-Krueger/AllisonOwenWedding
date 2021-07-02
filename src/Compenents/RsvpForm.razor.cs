@@ -18,6 +18,13 @@ namespace AllisonOwenWedding.Compenents
 
         [Parameter]
         public EventCallback ResetForm { get; set; }
+        private bool IsGuestInputDisabled
+        {
+            get
+            {
+                return !WeddingInvitee.Accepted;
+            }
+        }
 
         /// <summary>
         /// Update the invitee and request the form to reset

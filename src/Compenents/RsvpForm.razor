@@ -1,17 +1,27 @@
-﻿<p>We found you!</p>
-<EditForm Model="WeddingInvitee" OnValidSubmit="UpdateInviteeAsync">
-    <div>
-        <label for="accepted">Accept</label>
-        <InputCheckbox id="accepted" @bind-Value="WeddingInvitee.Accepted" />
+﻿<div class="rsvp-center">
+    <div style="text-align: center">
+        <p>We found you!</p>
     </div>
-    <div>
-        <label for="numberOfGuests">Additional Guests</label>
-        <InputSelect @bind-Value="WeddingInvitee.GuestsComing">
-            @for(int i = 0; i <= WeddingInvitee.GuestsExpected; i++)
-            {
-                <option value="@i">+@i</option>
-            }
-        </InputSelect>
-    </div>
-    <button type="submit">Submit</button>
-</EditForm>
+    <EditForm class="rsvp-form" Model="WeddingInvitee" OnValidSubmit="UpdateInviteeAsync">
+        <div>
+            <label for="accepted">Accept</label>
+            <div class="centered-content">
+                <InputCheckbox id="accepted" @bind-Value="WeddingInvitee.Accepted" />
+            </div>
+        </div>
+        <div>
+            <label for="numberOfGuests">Additional Guests</label>
+            <div class="centered-content">
+                <InputSelect disabled="@IsGuestInputDisabled" @bind-Value="WeddingInvitee.GuestsComing">
+                    @for(int i = 0; i <= WeddingInvitee.GuestsExpected; i++)
+                    {
+                        <option value="@i">+@i</option>
+                    }
+                </InputSelect>
+            </div>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </EditForm>
+</div>

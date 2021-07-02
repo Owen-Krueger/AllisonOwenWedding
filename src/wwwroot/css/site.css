@@ -1,10 +1,20 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+@font-face {
+    font-family: 'Great Vibes';
+    src: url("../fonts/GreatVibes.ttf") format('truetype');
+    font-weight: 900;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #171717;
-    color: #ffa1ac;
     color: white;
+}
+
+h1 {
+    font-family: 'Great Vibes';
+    color: #ffa1ac;
 }
 
 a, .btn-link {
@@ -53,7 +63,7 @@ a, .btn-link {
     }
 
 .main-layout {
-
+    margin-top: 5%;
 }
 
 .main-layout-heading {
@@ -64,6 +74,7 @@ a, .btn-link {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    padding: 0;
 }
 
 .navigation-list li {
@@ -72,4 +83,41 @@ a, .btn-link {
 
 .navigation-list a {
     text-decoration: none;
+}
+
+.main-layout-body {
+    display: flex;
+    justify-content: center;
+}
+
+.index-main-image {
+    width: 60%;
+    margin: auto;
+}
+
+.rsvp-center {
+    width: 40%;
+    margin: auto;
+}
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+}
+
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rsvp-form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.5rem;
+}
+
+.rsvp-form div * {
+    flex: 50%;
 }
