@@ -101,6 +101,10 @@ a, .btn-link {
     margin: auto;
 }
 
+.content-image {
+    width: 30%;
+}
+
 .rsvp-center {
     width: 40%;
     margin: auto;

@@ -1,20 +1,25 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="main-layout">
-    <div class="main-layout-heading">
-        <h1>Allison & Owen</h1>
-        <p>Februrary 19, 2021 | Braham, MN</p>
-    </div>
-    <div>
-        <ul class="navigation-list">
-            <li><a class="@GetLinkClass("")" href="/">Home</a></li>
-            <li><a class="@GetLinkClass("story")" href="/story">Our Story</a></li>
-            <li><a class="@GetLinkClass("wedding")" href="/wedding">Wedding</a></li>
-            <li><a class="@GetLinkClass("photos")" href="/photos">Photos</a></li>
-            <li><a class="@GetLinkClass("rsvp")" href="/rsvp">RSVP</a></li>
-        </ul>
-    </div>
+    <header>
+        <div class="main-layout-heading">
+            <h1>Allison & Owen</h1>
+            <p>Februrary 19, 2022 | Braham, MN</p>
+        </div>
+        <div>
+            <ul class="navigation-list">
+                <li><a class="@GetLinkClass("")" href="/">Home</a></li>
+                <li><a class="@GetLinkClass("wedding")" href="/wedding">Wedding</a></li>
+                <li><a class="@GetLinkClass("hotels")" href="/hotels">Hotels</a></li>
+                <li><a class="@GetLinkClass("photos")" href="/photos">Photos</a></li>
+                <li><a class="@GetLinkClass("rsvp")" href="/rsvp">RSVP</a></li>
+            </ul>
+        </div>
+    </header>
     <div class="main-layout-body">
         @Body
     </div>
+    <footer>
+
+    </footer>
 </div>
