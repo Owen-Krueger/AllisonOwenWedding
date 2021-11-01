@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding", "src\A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding.UnitTests", "tests\AllisonOwenWedding.UnitTests\AllisonOwenWedding.UnitTests.csproj", "{D2838D06-77B8-45C7-B50F-DA69CFA242C9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{363A8A86-5C9B-4FFE-B9BB-23F1C808060F}"
+	ProjectSection(SolutionItems) = preProject
+		build\Dockerfile = build\Dockerfile
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
