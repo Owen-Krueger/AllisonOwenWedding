@@ -1,4 +1,5 @@
 using AllisonOwenWedding.DataAccess;
+using AllisonOwenWedding.Models;
 using AllisonOwenWedding.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace AllisonOwenWedding
 {
@@ -24,6 +26,16 @@ namespace AllisonOwenWedding
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddSingleton(new EmailVariables()
+            {
+                EmailHost = Configuration["EmailHost"],
+                EmailUsername = Configuration["EmailUsername"],
+                EmailPassword = Configuration["EmailPassword"],
+                EmailPort = Convert.ToInt32(Configuration["EmailPort"]),
+                EmailRecipient = Configuration["EmailRecipient"]
+            });
+            services.AddTransient<IEmailService, EmailService>();
             services.AddDbContext<IWeddingEntities, WeddingEntities>(options => options.UseSqlite(@Configuration["DataSource"]));
             services.AddTransient<IWeddingService, WeddingService>();
         }

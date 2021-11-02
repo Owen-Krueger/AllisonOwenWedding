@@ -1,4 +1,5 @@
 ﻿using AllisonOwenWedding.DataAccess;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,7 +26,9 @@ namespace AllisonOwenWedding.Services
                     .Any(y =>
                         y.FullName.Equals(fullName.ToUpper())
                     )
-                ).FirstOrDefault();
+                )
+                .Include(x => x.InviteeIdentifiers)
+                .FirstOrDefault();
 
             return invitee;
         }

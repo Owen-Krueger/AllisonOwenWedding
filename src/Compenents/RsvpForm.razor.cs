@@ -13,6 +13,9 @@ namespace AllisonOwenWedding.Compenents
         [Inject]
         private IWeddingService WeddingService { get; set; }
 
+        [Inject]
+        private IEmailService EmailService { get; set; }
+
         [Parameter]
         public WeddingInvitee WeddingInvitee { get; set; }
 
@@ -33,6 +36,7 @@ namespace AllisonOwenWedding.Compenents
         {
             WeddingInvitee.Completed = true;
             await WeddingService.UpdateInviteeAsync();
+            EmailService.SendUpdateEmail(WeddingInvitee.InviteeIdentifiers[0].FullName, WeddingInvitee.Accepted, WeddingInvitee.GuestsComing);
             await ResetForm.InvokeAsync();
         }
     }
