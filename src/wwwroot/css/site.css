@@ -8,17 +8,21 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #171717;
-    color: white;
+    background-color: #ffe7ea;
+    color: #ff4b60;
+    /*line-height: 0.8rem;*/
 }
 
 h1 {
     font-family: 'Great Vibes';
-    color: #ffa1ac;
+}
+
+h1, h2, h3 {
+    color: #ff3049;
 }
 
 a, .btn-link {
-    color: #0366d6;
+    color: #ff8795;
 }
 
 .btn-primary {
@@ -62,39 +66,27 @@ a, .btn-link {
         top: 0.5rem;
     }
 
-.main-layout {
-    margin-top: 5%;
-}
-
-.main-layout-heading {
-    text-align: center;
-}
-
 .navigation-list {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding: 0;
+    padding: 0.25em 0;
+    background-color: #ff4b60;
 }
 
     .navigation-list li {
         list-style-type: none;
     }
 
-        .navigation-list a {
-            color: #ffa1ac;
-            text-decoration: none;
+    .navigation-list a {
+        color: #ffe7ea;
+        text-decoration: none;
+    }
+
+        .navigation-list a:hover, .navigation-list a:active, .active-link {
+            color: white !important;
+            text-decoration: underline !important;
         }
-
-            .navigation-list a:hover, .navigation-list a:active, .active-link {
-                color: #ffcdd3 !important;
-                text-decoration: underline !important;
-            }
-
-.main-layout-body {
-    display: flex;
-    justify-content: center;
-}
 
 .index-main-image {
     width: 60%;
@@ -105,29 +97,32 @@ a, .btn-link {
     width: 30%;
 }
 
-.rsvp-center {
-    width: 40%;
-    margin: auto;
-}
-
-.centered-content {
-    display: flex;
-    justify-content: center;
-}
-
 .rsvp-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    background-color: #ff4b60;
+    color: #ffe7ea;
 }
 
-    .rsvp-form div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin: 0.5rem;
+    .rsvp-form input, .rsvp-form select {
+        background-color: #ffe7ea !important;
+        color: black !important;
     }
 
-        .rsvp-form div * {
-            flex: 50%;
+        .rsvp-form select:disabled {
+            background-color: #e5cfd2 !important;
         }
+
+.btn {
+    background-color: #ffe7ea !important;
+    color: #ff4b60 !important;
+}
+
+    .btn:hover {
+        background-color: #ffdbdf !important;
+    }
+
+.rsvp-container {
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}

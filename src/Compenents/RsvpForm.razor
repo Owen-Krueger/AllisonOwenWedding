@@ -1,27 +1,31 @@
-﻿<div class="rsvp-center">
-    <div style="text-align: center">
+﻿@*<div class="rsvp-container">*@
+        @*<div>
         <p>We found you!</p>
-    </div>
-    <EditForm class="rsvp-form" Model="WeddingInvitee" OnValidSubmit="UpdateInviteeAsync">
-        <div>
-            <label for="accepted">Accept</label>
-            <div class="centered-content">
-                <InputCheckbox id="accepted" @bind-Value="WeddingInvitee.Accepted" />
+    </div>*@
+    <EditForm class="w-25 rounded p-5 rsvp-form" Model="WeddingInvitee" OnValidSubmit="UpdateInviteeAsync">
+        <div class="form-group">
+            <div class="form-check">
+                <InputCheckbox id="accepted" class="form-check-input" @bind-Value="WeddingInvitee.Accepted" />
+                <label for="accepted" class="form-check-label">Accept</label>
             </div>
         </div>
-        <div>
-            <label for="numberOfGuests">Additional Guests</label>
-            <div class="centered-content">
-                <InputSelect disabled="@IsGuestInputDisabled" @bind-Value="WeddingInvitee.GuestsComing">
-                    @for(int i = 0; i <= WeddingInvitee.GuestsExpected; i++)
-                    {
-                        <option value="@i">+@i</option>
-                    }
-                </InputSelect>
+        @if (WeddingInvitee.GuestsExpected > 0)
+        {
+            <div class="form-group">
+                <label for="guests">Additional Guests</label>
+                <div>
+                    <InputSelect id="guests" class="form-control" disabled="@IsGuestInputDisabled" @bind-Value="WeddingInvitee.GuestsComing">
+                        @for(int i = 0; i <= WeddingInvitee.GuestsExpected; i++)
+                        {
+                            <option value="@i">+@i</option>
+                        }
+                    </InputSelect>
+                </div>
             </div>
-        </div>
-        <div>
-            <button type="submit">Submit</button>
+        }
+        <div class="form-row justify-content-between mt-4">
+            <button class="btn col-md-5" type="submit">Submit</button>
+            <button class="btn col-md-5" @onclick="async () => await ResetForm.InvokeAsync()">Cancel</button>
         </div>
     </EditForm>
-</div>
+@*</div>*@
