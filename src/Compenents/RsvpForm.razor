@@ -25,7 +25,7 @@
         }
         <div class="form-row justify-content-between mt-4">
             <button class="btn col-md-5" type="submit">Submit</button>
-            <button class="btn col-md-5" @onclick="async () => await ResetForm.InvokeAsync()">Cancel</button>
+            <button class="btn col-md-5" type="reset" @onclick="async () => await ResetForm.InvokeAsync()">Cancel</button>
         </div>
     </EditForm>
 @*</div>*@
