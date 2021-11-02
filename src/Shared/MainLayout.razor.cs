@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System;
 
 namespace AllisonOwenWedding.Shared
 {
@@ -9,6 +10,15 @@ namespace AllisonOwenWedding.Shared
     {
         [Inject]
         NavigationManager NavigationManager { get; set; }
+
+        private int DaysTillWedding
+        {
+            get
+            {
+                DateTime weddingDate = new(2022, 2, 19);
+                return (weddingDate - DateTime.Today).Days;
+            }
+        }
 
         /// <summary>
         /// Get the class for a link based on the link.

@@ -68,3 +68,13 @@
         padding-right: 1.5rem !important;
     }
 }
+
+
+.main-layout {
+    margin-top: 3%;
+}
+
+.main-layout-body {
+    display: flex;
+    justify-content: center;
+}

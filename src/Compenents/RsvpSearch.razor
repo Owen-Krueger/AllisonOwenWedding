@@ -1,8 +1,10 @@
-﻿<EditForm Model="Request" OnValidSubmit="@OnSubmitAsync">
-    <DataAnnotationsValidator />
-    <div>
-        <label for="fullName">Full Name</label>
-        <InputText id="fullName" @bind-Value="Request.FullName" />
-    </div>
-    <button type="submit">Submit</button>
-</EditForm>
+﻿@*<div class="rsvp-container">*@
+    <EditForm class="w-25 rounded p-5 rsvp-form" Model="Request" OnValidSubmit="@OnSubmitAsync">
+        <DataAnnotationsValidator />
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <InputText id="fullName" class="form-control" @bind-Value="Request.FullName" placeholder="John Doe" />
+        </div>
+        <button class="btn" type="submit">Submit</button>
+    </EditForm>
+@*</div>*@
