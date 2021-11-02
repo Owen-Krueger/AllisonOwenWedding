@@ -27,7 +27,7 @@ namespace AllisonOwenWedding.UnitTests.Services
             InviteeIdentifier inviteeIdentifier = new()
             {
                 Id = 1,
-                InviteeId = 1,
+                UserId = 1,
                 FullName = "JOHN DOE"
             };
             var options = new DbContextOptionsBuilder<WeddingEntities>()
@@ -53,7 +53,7 @@ namespace AllisonOwenWedding.UnitTests.Services
             InviteeIdentifier inviteeIdentifier = new()
             {
                 Id = 1,
-                InviteeId = 1,
+                UserId = 1,
                 FullName = "JOHN DOE"
             };
             var options = new DbContextOptionsBuilder<WeddingEntities>()

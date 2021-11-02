@@ -24,8 +24,8 @@ namespace AllisonOwenWedding.DataAccess
             builder.Entity<WeddingInvitee>()
                 .HasMany(x => x.InviteeIdentifiers)
                 .WithOne(x => x.WeddingInvitee)
-                .HasPrincipalKey(x => x.Id)
-                .HasForeignKey(x => x.InviteeId);
+                .HasPrincipalKey(x => x.UserId)
+                .HasForeignKey(x => x.UserId);
         }
     }
 }

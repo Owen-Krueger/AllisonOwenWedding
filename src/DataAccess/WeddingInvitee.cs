@@ -1,18 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AllisonOwenWedding.DataAccess
 {
     /// <summary>
     /// The information for an invitee.
     /// </summary>
+    [Table("Invitees")]
     public class WeddingInvitee
     {
         /// <summary>
         /// The unique identifier for this invitee.
         /// </summary>
         [Key]
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         /// <summary>
         /// Whether or not the invitee has completed the form.

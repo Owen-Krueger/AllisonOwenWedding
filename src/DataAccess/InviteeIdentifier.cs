@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AllisonOwenWedding.DataAccess
 {
     /// <summary>
     /// The identifier information for an invitee.
     /// </summary>
+    [Table("InviteeIdentifiers")]
     public class InviteeIdentifier
     {
         /// <summary>
@@ -16,7 +18,7 @@ namespace AllisonOwenWedding.DataAccess
         /// <summary>
         /// The identifier for the wedding invitee.
         /// </summary>
-        public int InviteeId { get; set; }
+        public int UserId { get; set; }
 
         /// <summary>
         /// The full name string of the invitee.
