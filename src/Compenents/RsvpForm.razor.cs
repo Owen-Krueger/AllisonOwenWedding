@@ -36,6 +36,8 @@ namespace AllisonOwenWedding.Compenents
         private async Task UpdateInviteeAsync()
         {
             WeddingInvitee.Completed = true;
+            WeddingInvitee.GuestsComing = WeddingInvitee.Accepted ? WeddingInvitee.GuestsComing : 0;
+
             await WeddingService.UpdateInviteeAsync();
             EmailService.SendUpdateEmail(WeddingInvitee.InviteeIdentifiers[0].FullName, WeddingInvitee.Accepted, WeddingInvitee.GuestsComing);
             await ResetForm.InvokeAsync();

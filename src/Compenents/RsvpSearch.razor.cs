@@ -1,6 +1,7 @@
 ﻿using AllisonOwenWedding.DataAccess;
 using AllisonOwenWedding.Models;
 using AllisonOwenWedding.Services;
+using AllisonOwenWedding.Shared;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 
@@ -19,12 +20,23 @@ namespace AllisonOwenWedding.Compenents
 
         private RsvpSearchRequest Request { get; set; } = new RsvpSearchRequest();
 
+        private Dialog InfoDialog { get; set; }
+
         /// <summary>
         /// Attempt to find the invitee
         /// </summary>
         private async Task OnSubmitAsync()
         {
-            await SetWeddingInvitee.InvokeAsync(WeddingService.FindInvitee(Request.FullName));
+            var invitee = WeddingService.FindInvitee(Request.FullName);
+
+            if (invitee != null)
+            {
+                await SetWeddingInvitee.InvokeAsync(invitee);
+            }
+            else
+            {
+                InfoDialog.Show();
+            }
         }
     }
 }
