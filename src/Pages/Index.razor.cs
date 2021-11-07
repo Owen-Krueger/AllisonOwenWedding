@@ -9,7 +9,7 @@ namespace AllisonOwenWedding.Pages
 
         private void NavigateToRsvpPage()
         {
-            NavigationManager.NavigateTo("RSVP");
+            NavigationManager.NavigateTo("rsvp");
         }
     }
 }
