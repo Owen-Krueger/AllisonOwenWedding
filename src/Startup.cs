@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Net;
+using System.Net.Mail;
 
 namespace AllisonOwenWedding
 {
@@ -29,12 +31,24 @@ namespace AllisonOwenWedding
 
             services.AddSingleton(new EmailVariables()
             {
-                EmailHost = Configuration["EmailHost"],
                 EmailUsername = Configuration["EmailUsername"],
-                EmailPassword = Configuration["EmailPassword"],
-                EmailPort = Convert.ToInt32(Configuration["EmailPort"]),
                 EmailRecipient = Configuration["EmailRecipient"]
             });
+
+            services.AddScoped(x =>
+                {
+                    return new SmtpClient()
+                    {
+                        Host = Configuration["EmailHost"],
+                        Port = Convert.ToInt32(Configuration["EmailPort"]),
+                        Credentials = new NetworkCredential(Configuration["EmailUsername"], Configuration["EmailPassword"]),
+                        EnableSsl = true,
+                        UseDefaultCredentials = false,
+                        DeliveryMethod = SmtpDeliveryMethod.Network
+                    };
+                }
+            );
+
             services.AddTransient<IEmailService, EmailService>();
             services.AddDbContext<IWeddingEntities, WeddingEntities>(options => options.UseSqlite(@Configuration["DataSource"]));
             services.AddTransient<IWeddingService, WeddingService>();

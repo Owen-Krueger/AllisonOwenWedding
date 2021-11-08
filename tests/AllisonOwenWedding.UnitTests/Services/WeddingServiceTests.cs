@@ -18,7 +18,7 @@ namespace AllisonOwenWedding.UnitTests.Services
             var mock = new AutoMocker();
             WeddingInvitee invitee = new()
             {
-                Id = 1,
+                UserId = 1,
                 Completed = true,
                 Accepted = true,
                 GuestsExpected = 2,
@@ -48,7 +48,7 @@ namespace AllisonOwenWedding.UnitTests.Services
             var mock = new AutoMocker();
             WeddingInvitee invitee = new()
             {
-                Id = 1
+                UserId = 1
             };
             InviteeIdentifier inviteeIdentifier = new()
             {
@@ -74,7 +74,7 @@ namespace AllisonOwenWedding.UnitTests.Services
             var mock = new AutoMocker();
             WeddingInvitee invitee = new()
             {
-                Id = 1,
+                UserId = 1,
                 Completed = true,
                 Accepted = false,
                 GuestsComing = 2
