@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31410.357
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6D44663C-4210-457B-97E9-C93D7FFAC156}"
 EndProject
@@ -10,11 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding", "src\AllisonOwenWedding.csproj", "{9EBA3206-A344-46BE-B88D-395E195BE9AD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding.UnitTests", "tests\AllisonOwenWedding.UnitTests\AllisonOwenWedding.UnitTests.csproj", "{D2838D06-77B8-45C7-B50F-DA69CFA242C9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{363A8A86-5C9B-4FFE-B9BB-23F1C808060F}"
-	ProjectSection(SolutionItems) = preProject
-		build\Dockerfile = build\Dockerfile
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
