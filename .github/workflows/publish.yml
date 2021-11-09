@@ -1,4 +1,4 @@
-name: CI to Docker
+name: Deploy to Docker Hub
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
           context: ./
           file: ./build/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/kingredeagle/allison-owen-wedding:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/allison-owen-wedding:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
