@@ -8,13 +8,12 @@ WORKDIR /src
 COPY ["src/AllisonOwenWedding.csproj", "out/"]
 RUN dotnet restore "out/AllisonOwenWedding.csproj"
 COPY . .
-WORKDIR "/src/out"
-RUN dotnet build "AllisonOwenWedding.csproj" -c Release -o /app/build
+RUN dotnet build "out/AllisonOwenWedding.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "AllisonOwenWedding.csproj" -c Release -o /app/publish
+RUN dotnet publish "out/AllisonOwenWedding.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AllisonOwenWedding.dll"]
+ENTRYPOINT ["dotnet", "out/AllisonOwenWedding.dll"]
