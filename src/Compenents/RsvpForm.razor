@@ -1,4 +1,7 @@
-﻿<EditForm class="w-25 rounded p-5 rsvp-form" Model="WeddingInvitee" OnValidSubmit="UpdateInviteeAsync">
+﻿<Dialog @ref="ErrorDialog" Title="Whoops!" ShowOkayButton="true">
+    <p>Oh shoot, we failed to submit your RSVP! Please try again. If you continue to have problems, let Owen or Allison know your response manually.</p>
+</Dialog>
+<EditForm class="w-25 rounded p-5 rsvp-form" Model="WeddingInvitee" OnValidSubmit="UpdateInviteeAsync">
     <div class="form-group">
         <div class="form-check">
             <InputCheckbox id="accepted" class="form-check-input" @bind-Value="WeddingInvitee.Accepted" />

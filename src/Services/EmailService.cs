@@ -1,4 +1,5 @@
 ﻿using AllisonOwenWedding.Models;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Net.Mail;
 
@@ -7,14 +8,16 @@ namespace AllisonOwenWedding.Services
     /// <inheritdoc />
     public class EmailService : IEmailService
     {
+        private readonly ILogger<EmailService> _logger;
         private readonly SmtpClient _client;
         private readonly EmailVariables _emailVariables;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public EmailService(SmtpClient client, EmailVariables emailVariables)
+        public EmailService(ILogger<EmailService> logger, SmtpClient client, EmailVariables emailVariables)
         {
+            _logger = logger;
             _client = client;
             _emailVariables = emailVariables;
         }
@@ -35,6 +38,7 @@ namespace AllisonOwenWedding.Services
             }
             catch (Exception e)
             {
+                _logger.LogError("Exception thrown while sending update email: {Exception}", e.Message);
                 success = false;
             }
 

@@ -9,13 +9,14 @@ namespace AllisonOwenWedding.Services
     public interface IWeddingService
     {
         /// <summary>
-        /// Attempt to find the wedding invitee based on a name string
+        /// Attempt to find the wedding invitee based on a name string.
         /// </summary>
         WeddingInvitee FindInvitee(string fullName);
 
         /// <summary>
-        /// Updates the entities
+        /// Updates the entities.
         /// </summary>
-        Task UpdateInviteeAsync();
+        /// <returns>Whether or not the insert was successful.</returns>
+        Task<bool> UpdateInviteeAsync();
     }
 }
