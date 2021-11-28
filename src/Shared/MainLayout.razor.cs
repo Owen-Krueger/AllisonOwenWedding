@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
+using System.Text;
 
 namespace AllisonOwenWedding.Shared
 {
@@ -25,8 +26,11 @@ namespace AllisonOwenWedding.Shared
         /// </summary>
         public string GetLinkClass(string link)
         {
+            StringBuilder classBuilder = new();
+            classBuilder.Append("nav-link");
             string relativeUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
-            return relativeUrl.Equals(link) ? "active-link" : string.Empty;
+            classBuilder.Append(relativeUrl.Equals(link) ? " active-link" : string.Empty);
+            return classBuilder.ToString();
         }
     }
 }
