@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
+using System.Text;
 
 namespace AllisonOwenWedding.Shared
 {
@@ -11,13 +12,10 @@ namespace AllisonOwenWedding.Shared
         [Inject]
         NavigationManager NavigationManager { get; set; }
 
-        private int DaysTillWedding
+        private static int DaysTillWedding()
         {
-            get
-            {
-                DateTime weddingDate = new(2022, 2, 19);
-                return (weddingDate - DateTime.Today).Days;
-            }
+            DateTime weddingDate = new(2022, 2, 19);
+            return (weddingDate - DateTime.Today).Days;
         }
 
         /// <summary>
@@ -25,8 +23,11 @@ namespace AllisonOwenWedding.Shared
         /// </summary>
         public string GetLinkClass(string link)
         {
+            StringBuilder classBuilder = new();
+            classBuilder.Append("nav-link");
             string relativeUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
-            return relativeUrl.Equals(link) ? "active-link" : string.Empty;
+            classBuilder.Append(relativeUrl.Equals(link) ? " active-link" : string.Empty);
+            return classBuilder.ToString();
         }
     }
 }

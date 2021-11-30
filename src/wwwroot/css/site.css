@@ -1,35 +1,219 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
-
+/* GENERAL */
 @font-face {
     font-family: 'Great Vibes';
     src: url("../fonts/GreatVibes.ttf") format('truetype');
     font-weight: 900;
 }
 
-html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #ffe7ea;
-    color: #ff4b60;
+:root {
+    --primary-color: #ff4b60;
+    --secondary-color: #ff6e7f;
+    --background-color: #f9f1f1;
+    --form-background-color: #ffcdcd;
+    --link-color-hover: #000000;
+    --input-border-color: #992D39;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+    /* Firefox scrollbar styling*/
+    scrollbar-color: var(--primary-color) var(--background-color);
+    scrollbar-width: thin;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+h1, h2 {
+    color: var(--primary-color);
+    text-align: center;
 }
 
 h1 {
     font-family: 'Great Vibes';
 }
 
-h1, h2, h3 {
-    color: #ff3049;
+p {
+    color: var(--primary-color);
 }
 
-a, .btn-link {
-    color: #ff8795;
+hr {
+    width: 25%;
+    min-width: 300px;
+    border: 0;
+    border-top: 1px solid var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+a, a:visited {
+    color: var(--primary-color);
 }
 
+a:hover {
+    color: var(--link-color-hover);
+}
+
+/* HEADER */
+.header-container {
+    margin-top: 1rem;
+}
+
+.header-content {
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.header-content p {
+    line-height: 0.5rem;
+}
+
+/* NAV BAR */
+.nav-bar {
+    margin: auto;
+    width: 97%;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: .5rem;
+    margin-bottom: 1rem;
+}
+
+.nav-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    text-align: center;
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-link, .nav-link:visited {
+    color: var(--background-color);
+    text-decoration: none;
+}
+
+.nav-link:hover, .active-link {
+    color: white;
+}
+
+/* BODY */
+body {
+    margin: 0;
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 7rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: var(--background-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 15px;
+}
+
+.body-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.body-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+.header-image {
+    border-radius: 5px;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+@media only screen and (max-width: 900px) {
+    .body-content {
+        width: 90%;
+    }
+}
+
+/* FOOTER */
+.footer-container {
+    text-align: center;
+    line-height: 0.5rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+}
+
+/* RSVP FORMS */
+.rsvp-form {
+    background-color: var(--form-background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border-radius: 5px;
+    width: 95%;
+    max-width: 800px;
+    padding: 3rem;
+    margin: auto;
+    font-size: medium;
+}
+    .rsvp-form .invalid {
+        border: 2px solid red;
+    }
+
+    .rsvp-form .validation-message {
+        color: red;
+    }
+
+    .rsvp-form .form-input {
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 1rem;
+        border-radius: 5px;
+        border: 1px solid var(--input-border-color);
+        margin: 1rem 0;
+        font-size: medium;
+    }
+
+    .rsvp-form .button-input {
+        color: black;
+        cursor: pointer;
+    }
+
+
+    .rsvp-form .submit-input {
+        background-color: var(--secondary-color);
+    }
+
+    .rsvp-form .submit-input:hover {
+        background-color: var(--primary-color);
+    }
+
+/* ERROR HANDLING */
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
@@ -48,66 +232,3 @@ a, .btn-link {
         right: 0.75rem;
         top: 0.5rem;
     }
-
-.navigation-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 0.25em 0;
-    background-color: #ff4b60;
-}
-
-    .navigation-list li {
-        list-style-type: none;
-    }
-
-    .navigation-list a {
-        color: #ffe7ea;
-        text-decoration: none;
-    }
-
-        .navigation-list a:hover, .navigation-list a:active, .active-link {
-            color: white !important;
-            text-decoration: underline !important;
-        }
-
-.header-image {
-    display: block;
-    width: 60%;
-    margin: auto;
-}
-
-.index-main-image {
-    width: 60%;
-    margin: auto;
-}
-
-.btn {
-    background-color: #ffe7ea !important;
-    color: #ff4b60 !important;
-}
-
-    .btn:hover {
-        background-color: #ffdbdf !important;
-    }
-
-.rsvp-container {
-    height: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-
-.rsvp-form {
-    background-color: #ff4b60;
-    color: #ffe7ea;
-}
-
-    .rsvp-form input, .rsvp-form select {
-        background-color: #ffe7ea !important;
-        color: black !important;
-    }
-
-        .rsvp-form select:disabled {
-            background-color: #e5cfd2 !important;
-        }

@@ -1,28 +1,27 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="mt-2">
-    <header>
-        <div class="text-center header-content">
-            <h1>Allison & Owen</h1>
-            <p>Februrary 19, 2022 | Braham, MN</p>
-            <p>@DaysTillWedding days until the wedding!</p>
-        </div>
-        <div>
-            <ul class="navigation-list">
-                <li><a class="@GetLinkClass("")" href="/">Home</a></li>
-                <li><a class="@GetLinkClass("wedding")" href="/wedding">Wedding</a></li>
-                <li><a class="@GetLinkClass("hotels")" href="/hotels">Hotels</a></li>
-                <li><a class="@GetLinkClass("photos")" href="/photos">Photos</a></li>
-                <li><a class="@GetLinkClass("rsvp")" href="/rsvp">RSVP</a></li>
-            </ul>
-        </div>
-    </header>
-    <div class="d-flex justify-content-center">
+<header class="header-container">
+    <div class="header-content">
+        <h1>Allison & Owen</h1>
+        <p>Februrary 19, 2022 | Braham, MN</p>
+        <p>@DaysTillWedding() days until the wedding!</p>
+    </div>
+</header>
+    <div class="nav-bar">
+        <ul class="nav-list">
+            <li class="nav-item"><a class="@GetLinkClass("")" href="/">Home</a></li>
+            <li class="nav-item"><a class="@GetLinkClass("wedding")" href="/wedding">Wedding</a></li>
+            <li class="nav-item"><a class="@GetLinkClass("hotels")" href="/hotels">Hotels</a></li>
+            <li class="nav-item"><a class="@GetLinkClass("rsvp")" href="/rsvp">RSVP</a></li>
+        </ul>
+    </div>
+<div class="body-container">
+    <div class="body-content">
         @Body
     </div>
-    <footer class="text-center">
-        <hr class="col-md-6" />
-        <h1>A & O</h1>
-        <p>02.19.2022</p>
-    </footer>
 </div>
+<footer class="footer-container">
+    <hr class="" />
+    <h1>A & O</h1>
+    <p>02.19.2022</p>
+</footer>
