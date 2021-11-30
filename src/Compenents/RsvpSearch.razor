@@ -1,11 +1,10 @@
 ﻿<Dialog @ref="InfoDialog" Title="Whoops!" ShowOkayButton="true">
     <p>We couldn't find you! Please try again.</p>
 </Dialog>
-<EditForm class="w-25 rounded p-5 rsvp-form" Model="Request" OnValidSubmit="@OnSubmitAsync">
+<EditForm class="rsvp-form" Model="Request" OnValidSubmit="@OnSubmitAsync">
     <DataAnnotationsValidator />
-    <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <InputText id="fullName" class="form-control" @bind-Value="Request.FullName" placeholder="John Doe" />
-    </div>
-    <button class="btn" type="submit">Submit</button>
+    <ValidationSummary />
+    <label for="fullName">Full Name</label>
+    <InputText id="fullName" class="form-input text-input" @bind-Value="Request.FullName" placeholder="John Doe" />
+    <input type="submit" class="form-input button-input submit-input" value="Submit" />
 </EditForm>

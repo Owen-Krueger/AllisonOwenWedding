@@ -4,7 +4,7 @@
     <div class="header-content">
         <h1>Allison & Owen</h1>
         <p>Februrary 19, 2022 | Braham, MN</p>
-        <p>@DaysTillWedding days until the wedding!</p>
+        <p>@DaysTillWedding() days until the wedding!</p>
     </div>
 </header>
     <div class="nav-bar">
@@ -12,12 +12,13 @@
             <li class="nav-item"><a class="@GetLinkClass("")" href="/">Home</a></li>
             <li class="nav-item"><a class="@GetLinkClass("wedding")" href="/wedding">Wedding</a></li>
             <li class="nav-item"><a class="@GetLinkClass("hotels")" href="/hotels">Hotels</a></li>
-            @*<li class="nav-item"><a class="@GetLinkClass("photos")" href="/photos">Photos</a></li>*@
             <li class="nav-item"><a class="@GetLinkClass("rsvp")" href="/rsvp">RSVP</a></li>
         </ul>
     </div>
 <div class="body-container">
-    @Body
+    <div class="body-content">
+        @Body
+    </div>
 </div>
 <footer class="footer-container">
     <hr class="" />

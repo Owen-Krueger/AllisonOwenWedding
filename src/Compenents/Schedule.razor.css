@@ -1,0 +1,8 @@
+﻿.schedule-row {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 25%;
+    min-width: 300px;
+}

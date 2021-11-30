@@ -12,13 +12,10 @@ namespace AllisonOwenWedding.Shared
         [Inject]
         NavigationManager NavigationManager { get; set; }
 
-        private int DaysTillWedding
+        private static int DaysTillWedding()
         {
-            get
-            {
-                DateTime weddingDate = new(2022, 2, 19);
-                return (weddingDate - DateTime.Today).Days;
-            }
+            DateTime weddingDate = new(2022, 2, 19);
+            return (weddingDate - DateTime.Today).Days;
         }
 
         /// <summary>

@@ -1,6 +1,4 @@
-/* 
-    GENERAL
-*/
+/* GENERAL */
 @font-face {
     font-family: 'Great Vibes';
     src: url("../fonts/GreatVibes.ttf") format('truetype');
@@ -10,16 +8,17 @@
 :root {
     --primary-color: #ff4b60;
     --secondary-color: #ff6e7f;
-    --tertiary-color: #ffe7ea;
-    --text-color: #545454;
-    --link-color: #ff8795;
+    --background-color: #f9f1f1;
+    --form-background-color: #ffcdcd;
+    --link-color-hover: #000000;
+    --input-border-color: #992D39;
 }
 
 html {
     height: 100%;
     box-sizing: border-box;
     /* Firefox scrollbar styling*/
-    scrollbar-color: var(--primary-color) var(--tertiary-color);
+    scrollbar-color: var(--primary-color) var(--background-color);
     scrollbar-width: thin;
 }
 
@@ -32,6 +31,11 @@ html {
 h1 {
     font-family: 'Great Vibes';
     color: var(--primary-color);
+    text-align: center;
+}
+
+p {
+    color: var(--primary-color);
 }
 
 hr {
@@ -42,9 +46,15 @@ hr {
     border-color: var(--secondary-color);
 }
 
-/* 
-    HEADER 
-*/
+a, a:visited {
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--link-color-hover);
+}
+
+/* HEADER */
 .header-container {
     margin-top: 1rem;
 }
@@ -58,9 +68,7 @@ hr {
     line-height: 0.5rem;
 }
 
-/* 
-    NAV BAR 
-*/
+/* NAV BAR */
 .nav-bar {
     margin: auto;
     width: 97%;
@@ -84,8 +92,8 @@ hr {
     width: 100%;
 }
 
-.nav-link {
-    color: var(--tertiary-color);
+.nav-link, .nav-link:visited {
+    color: var(--background-color);
     text-decoration: none;
 }
 
@@ -93,16 +101,14 @@ hr {
     color: white;
 }
 
-/* 
-    BODY 
-*/
+/* BODY */
 body {
     margin: 0;
     position: relative;
     min-height: 100%;
     padding-bottom: 7rem;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: var(--tertiary-color);
+    background-color: var(--background-color);
     color: var(--text-color);
     font-size: 16px;
 }
@@ -112,7 +118,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-    background-color: var(--tertiary-color);
+    background-color: var(--background-color);
 }
 
 body::-webkit-scrollbar-thumb {
@@ -120,16 +126,24 @@ body::-webkit-scrollbar-thumb {
     border-radius: 15px;
 }
 
-.body-container{
+.body-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.body-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .header-image {
     border-radius: 5px;
     width: 100%;
     max-width: 800px;
+    margin: auto;
 }
 
 @media only screen and (max-width: 800px) {
@@ -138,9 +152,7 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-/* 
-    FOOTER 
-*/
+/* FOOTER */
 .footer-container {
     text-align: center;
     line-height: 0.5rem;
@@ -151,9 +163,53 @@ body::-webkit-scrollbar-thumb {
     padding: 1rem;
 }
 
-/* 
-    ERROR HANDLING 
-*/
+/* RSVP FORMS */
+.rsvp-form {
+    background-color: var(--form-background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border-radius: 5px;
+    width: 95%;
+    max-width: 800px;
+    padding: 3rem;
+    margin: auto;
+    font-size: medium;
+}
+    .rsvp-form .invalid {
+        border: 2px solid red;
+    }
+
+    .rsvp-form .validation-message {
+        color: red;
+    }
+
+    .rsvp-form .form-input {
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 1rem;
+        border-radius: 5px;
+        border: 1px solid var(--input-border-color);
+        margin: 1rem 0;
+        font-size: medium;
+    }
+
+    .rsvp-form .button-input {
+        color: black;
+        cursor: pointer;
+    }
+
+
+    .rsvp-form .submit-input {
+        background-color: var(--secondary-color);
+    }
+
+    .rsvp-form .submit-input:hover {
+        background-color: var(--primary-color);
+    }
+
+/* ERROR HANDLING */
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
