@@ -6,7 +6,7 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
     <label for="accepted">Able to attend?</label>
-    <InputSelect id="accepted" class="form-input" @bind-Value="InviteeUpdate.RsvpResponse">
+    <InputSelect id="accepted" class="form-element" @bind-Value="InviteeUpdate.RsvpResponse">
         <option value="@AcceptedResponse.Default" selected hidden>Choose response</option>
         <option value="@AcceptedResponse.Accept">Accept</option>
         <option value="@AcceptedResponse.Reject">Decline</option>
@@ -14,13 +14,13 @@
     @if (InviteeUpdate.GuestsExpected > 0)
     {
         <label for="guests">Additional Guests</label>
-        <InputSelect id="guests" class="form-input" disabled="@IsGuestInputDisabled" @bind-Value="InviteeUpdate.GuestsComing">
+        <InputSelect id="guests" class="form-element" disabled="@IsGuestInputDisabled" @bind-Value="InviteeUpdate.GuestsComing">
             @for(int i = 0; i <= InviteeUpdate.GuestsExpected; i++)
             {
                 <option value="@i">+@i</option>
             }
         </InputSelect>
     }
-    <input class="form-input button-input submit-input" type="submit" disabled="@IsSubmitButtonDisabled" value="Submit" />
-    <input class="form-input button-input" type="reset" @onclick="async () => await ResetForm.InvokeAsync()" value="Cancel" />
+    <input class="form-element button-input submit-input" type="submit" disabled="@IsSubmitButtonDisabled" value="Submit" />
+    <input class="form-element button-input" type="reset" @onclick="async () => await ResetForm.InvokeAsync()" value="Cancel" />
 </EditForm>
