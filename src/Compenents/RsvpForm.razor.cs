@@ -4,6 +4,7 @@ using AllisonOwenWedding.Services;
 using AllisonOwenWedding.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
+using Polly;
 using System.Threading.Tasks;
 
 namespace AllisonOwenWedding.Compenents
@@ -95,7 +96,9 @@ namespace AllisonOwenWedding.Compenents
             WeddingInvitee.Accepted = InviteeUpdate.Accepted;
             WeddingInvitee.GuestsComing = InviteeUpdate.GuestsComing;
 
-            bool databaseResult = await WeddingService.UpdateInviteeAsync();
+            var databasePolicy = Policy.HandleResult<bool>(x => !x).RetryAsync(3);
+            bool databaseResult = await databasePolicy.ExecuteAsync(() => WeddingService.UpdateInviteeAsync());
+
             bool emailResult = EmailService.SendUpdateEmail(fullName, WeddingInvitee.Accepted, WeddingInvitee.GuestsComing);
 
             if(!databaseResult && !emailResult)
