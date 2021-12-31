@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6D44663C-4210-457B-97E9-C93D7FFAC156}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6EE3FAA3-0296-4E72-96B4-16BB53863622}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D155BF2D-F705-4AA4-8477-DE52EAFEECE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding.Client", "src\Client\AllisonOwenWedding.Client.csproj", "{6DC69E11-BB20-4C3E-8A66-7570FF99C74A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding", "src\AllisonOwenWedding.csproj", "{9EBA3206-A344-46BE-B88D-395E195BE9AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding.Server", "src\Server\AllisonOwenWedding.Server.csproj", "{D056487D-CAB4-45C1-9D5E-3D4B6C3FCA80}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding.UnitTests", "tests\AllisonOwenWedding.UnitTests\AllisonOwenWedding.UnitTests.csproj", "{D2838D06-77B8-45C7-B50F-DA69CFA242C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding.Shared", "src\Shared\AllisonOwenWedding.Shared.csproj", "{56FAC1B7-8FF3-43FC-8D83-A581EEFBBF33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,23 +17,28 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9EBA3206-A344-46BE-B88D-395E195BE9AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9EBA3206-A344-46BE-B88D-395E195BE9AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9EBA3206-A344-46BE-B88D-395E195BE9AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9EBA3206-A344-46BE-B88D-395E195BE9AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2838D06-77B8-45C7-B50F-DA69CFA242C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2838D06-77B8-45C7-B50F-DA69CFA242C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2838D06-77B8-45C7-B50F-DA69CFA242C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2838D06-77B8-45C7-B50F-DA69CFA242C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC69E11-BB20-4C3E-8A66-7570FF99C74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC69E11-BB20-4C3E-8A66-7570FF99C74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC69E11-BB20-4C3E-8A66-7570FF99C74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC69E11-BB20-4C3E-8A66-7570FF99C74A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D056487D-CAB4-45C1-9D5E-3D4B6C3FCA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D056487D-CAB4-45C1-9D5E-3D4B6C3FCA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D056487D-CAB4-45C1-9D5E-3D4B6C3FCA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D056487D-CAB4-45C1-9D5E-3D4B6C3FCA80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56FAC1B7-8FF3-43FC-8D83-A581EEFBBF33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FAC1B7-8FF3-43FC-8D83-A581EEFBBF33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FAC1B7-8FF3-43FC-8D83-A581EEFBBF33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FAC1B7-8FF3-43FC-8D83-A581EEFBBF33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9EBA3206-A344-46BE-B88D-395E195BE9AD} = {6D44663C-4210-457B-97E9-C93D7FFAC156}
-		{D2838D06-77B8-45C7-B50F-DA69CFA242C9} = {D155BF2D-F705-4AA4-8477-DE52EAFEECE5}
+		{6DC69E11-BB20-4C3E-8A66-7570FF99C74A} = {6EE3FAA3-0296-4E72-96B4-16BB53863622}
+		{D056487D-CAB4-45C1-9D5E-3D4B6C3FCA80} = {6EE3FAA3-0296-4E72-96B4-16BB53863622}
+		{56FAC1B7-8FF3-43FC-8D83-A581EEFBBF33} = {6EE3FAA3-0296-4E72-96B4-16BB53863622}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {164C1F5E-7711-4CAB-A532-F3EB4A0D1288}
+		SolutionGuid = {09A97406-2133-4680-AAA2-EC9C2D0279F7}
 	EndGlobalSection
 EndGlobal

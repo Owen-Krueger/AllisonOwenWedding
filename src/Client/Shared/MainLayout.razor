@@ -1,0 +1,52 @@
+﻿@using System.Text
+@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<header class="header-container">
+    <div class="header-content">
+        <h1>Allison & Owen</h1>
+        <p>Februrary 19, 2022 | Braham, MN</p>
+        <p>@DaysTillWedding() days until the wedding!</p>
+    </div>
+</header>
+    <div class="nav-bar">
+        <ul class="nav-list">
+            <li class="nav-item"><a class="@GetLinkClass("")" href="/">Home</a></li>
+            <li class="nav-item"><a class="@GetLinkClass("wedding")" href="/wedding">Wedding</a></li>
+            <li class="nav-item"><a class="@GetLinkClass("hotels")" href="/hotels">Hotels</a></li>
+            <li class="nav-item"><a class="@GetLinkClass("rsvp")" href="/rsvp">RSVP</a></li>
+        </ul>
+    </div>
+<div class="body-container">
+    <div class="body-content">
+        @Body
+    </div>
+</div>
+<footer class="footer-container">
+    <hr class="" />
+    <h1>A & O</h1>
+    <p>02.19.2022</p>
+</footer>
+
+@code {
+    /// <summary>
+    /// Gets the number of days until the wedding
+    /// </summary>
+    private static int DaysTillWedding()
+    {
+        DateTime weddingDate = new(2022, 2, 19);
+        return (weddingDate - DateTime.Today).Days;
+    }
+
+    /// <summary>
+    /// Get the class for a link based on the link.
+    /// </summary>
+    public string GetLinkClass(string link)
+    {
+        StringBuilder classBuilder = new();
+        classBuilder.Append("nav-link");
+        string relativeUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        classBuilder.Append(relativeUrl.Equals(link) ? " active-link" : string.Empty);
+        return classBuilder.ToString();
+    }
+}
