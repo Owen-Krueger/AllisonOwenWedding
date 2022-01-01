@@ -10,6 +10,6 @@ RUN dotnet build "AllisonOwenWedding.Server.csproj" -c Release -o /app/build
 RUN dotnet publish "AllisonOwenWedding.Server.csproj" -c Release -o /app/publish
 
 FROM base AS final
-# WORKDIR /app
+WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "AllisonOwenWedding.Server.dll"]
