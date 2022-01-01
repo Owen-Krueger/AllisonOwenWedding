@@ -4,17 +4,12 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src/Server
-COPY AllisonOwenWedding.Server.csproj /opt/app
-RUN dotnet restore "AllisonOwenWedding.Server.csproj"
 COPY . .
-WORKDIR /src/Server/opt/app
-RUN dotnet build "/opt/app/AllisonOwenWedding.Server.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "/opt/app/AllisonOwenWedding.Server.csproj" -c Release -o /app/publish
+RUN dotnet restore "AllisonOwenWedding.Server.csproj"
+RUN dotnet build "AllisonOwenWedding.Server.csproj" -c Release -o /app/build
+RUN dotnet publish "AllisonOwenWedding.Server.csproj" -c Release -o /app/publish
 
 FROM base AS final
-WORKDIR /app
+# WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "/opt/appAllisonOwenWedding.Server.dll"]
+ENTRYPOINT ["dotnet", "AllisonOwenWedding.Server.dll"]
