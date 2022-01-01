@@ -1,0 +1,37 @@
+﻿@using AllisonOwenWedding.Models
+@inject HttpClient HttpClient
+
+<Dialog @ref="InfoDialog" Title="Whoops!" ShowOkayButton="true">
+    <p>We couldn't find you! Please try again.</p>
+</Dialog>
+<EditForm class="rsvp-form" Model="Request" OnValidSubmit="@OnSubmitAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <label for="fullName">Full Name</label>
+    <InputText id="fullName" class="form-element text-input" @bind-Value="Request.FullName" placeholder="John Doe" />
+    <input type="submit" class="form-element button-input submit-input" value="Submit" />
+</EditForm>
+
+@code {
+    [Parameter]
+    public EventCallback<WeddingInvitee> SetWeddingInvitee { get; set; }
+    private RsvpSearchRequest Request = new();
+    private Dialog InfoDialog;
+
+    /// <summary>
+    /// Attempt to find the invitee
+    /// </summary>
+    private async Task OnSubmitAsync()
+    {
+        var invitee = await HttpClient.GetFromJsonAsync<WeddingInvitee>($"invitees/{Request.FullName}");
+
+        if (invitee != null)
+        {
+            await SetWeddingInvitee.InvokeAsync(invitee);
+        }
+        else
+        {
+            InfoDialog.Show();
+        }
+    }
+}

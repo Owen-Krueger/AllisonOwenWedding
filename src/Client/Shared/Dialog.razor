@@ -1,0 +1,47 @@
+﻿@if (ShowDialog)
+{
+    <div class="modal-container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" @onclick="@Close">&times;</span>
+                <h3>@Title</h3>
+            </div>
+            <div class="modal-body">
+                    <div>@ChildContent</div>
+                    @if (ShowOkayButton)
+                    {
+                        <button class="submit-input" @onclick="Close">Okay</button>
+                    }
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public bool ShowDialog { get; set; } = false;
+    [Parameter]
+    public bool ShowOkayButton { get; set; } = false;
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    /// <summary>
+    /// Show the dialog.
+    /// </summary>
+    public void Show()
+    {
+        ShowDialog = true;
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Close the dialog.
+    /// </summary>
+    public void Close()
+    {
+        ShowDialog = false;
+        StateHasChanged();
+    }
+}

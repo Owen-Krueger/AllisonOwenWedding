@@ -1,0 +1,34 @@
+﻿@using AllisonOwenWedding.Client.Components
+@using AllisonOwenWedding.Models
+@page "/rsvp"
+
+@if (WeddingInvitee == null)
+{
+    <RsvpSearch SetWeddingInvitee="SetWeddingInvitee" />
+}
+else
+{
+    <RsvpForm WeddingInvitee="WeddingInvitee" ResetForm="ResetForm" />
+}
+
+@code {
+    private WeddingInvitee? WeddingInvitee = null;
+
+    /// <summary>
+    /// Sets the invitee
+    /// </summary>
+    private void SetWeddingInvitee(WeddingInvitee weddingInvitee)
+    {
+        WeddingInvitee = weddingInvitee;
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Resets the request form
+    /// </summary>
+    private void ResetForm()
+    {
+        WeddingInvitee = null;
+        StateHasChanged();
+    }
+}
