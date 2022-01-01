@@ -23,14 +23,25 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Build and push
+      # Server
+      - name: Build and push Server
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           context: ./
-          file: ./src/Dockerfile
+          file: ./src/Server/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/allison-owen-wedding:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/allison-owen-wedding-server:latest
+
+      # Client      
+      - name: Build and push Client
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: ./src/Client/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/allison-owen-wedding-client:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
