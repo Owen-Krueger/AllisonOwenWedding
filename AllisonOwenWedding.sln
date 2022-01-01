@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31313.79
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6EE3FAA3-0296-4E72-96B4-16BB53863622}"
 EndProject
@@ -10,6 +10,21 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding.Server", "src\Server\AllisonOwenWedding.Server.csproj", "{D056487D-CAB4-45C1-9D5E-3D4B6C3FCA80}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllisonOwenWedding.Shared", "src\Shared\AllisonOwenWedding.Shared.csproj", "{56FAC1B7-8FF3-43FC-8D83-A581EEFBBF33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{61C43973-0B44-4FDD-96D6-E206AF657233}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitignore = .gitignore
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{2F7575CA-958D-439D-9A1F-D69366E3C740}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{B69D4C7D-E472-48A4-A17B-335FF7D4EF67}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\publish.yml = .github\workflows\publish.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +52,7 @@ Global
 		{6DC69E11-BB20-4C3E-8A66-7570FF99C74A} = {6EE3FAA3-0296-4E72-96B4-16BB53863622}
 		{D056487D-CAB4-45C1-9D5E-3D4B6C3FCA80} = {6EE3FAA3-0296-4E72-96B4-16BB53863622}
 		{56FAC1B7-8FF3-43FC-8D83-A581EEFBBF33} = {6EE3FAA3-0296-4E72-96B4-16BB53863622}
+		{B69D4C7D-E472-48A4-A17B-335FF7D4EF67} = {2F7575CA-958D-439D-9A1F-D69366E3C740}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09A97406-2133-4680-AAA2-EC9C2D0279F7}
