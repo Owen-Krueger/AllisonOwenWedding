@@ -1,13 +1,14 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
+WORKDIR /src
 EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src/Server
 COPY AllisonOwenWedding.Server.csproj /opt/app
 RUN dotnet restore "AllisonOwenWedding.Server.csproj"
 COPY . .
-WORKDIR /opt/app
+WORKDIR /src/Server/opt/app
 RUN dotnet build "/opt/app/AllisonOwenWedding.Server.csproj" -c Release -o /app/build
 
 FROM build AS publish

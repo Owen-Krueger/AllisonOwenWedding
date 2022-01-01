@@ -1,5 +1,5 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
+WORKDIR /src/Client
 COPY . ./
 RUN dotnet publish -c Release -o output
 
