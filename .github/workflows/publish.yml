@@ -25,7 +25,7 @@ jobs:
 
       # Server
       - name: Build and push Server
-        id: docker_build
+        id: docker_build_server
         uses: docker/build-push-action@v2
         with:
           context: ./
@@ -33,9 +33,12 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/allison-owen-wedding-server:latest
 
+      - name: Image digest (Server)
+        run: echo ${{ steps.docker_build_server.outputs.digest }}
+
       # Client      
       - name: Build and push Client
-        id: docker_build
+        id: docker_build_client
         uses: docker/build-push-action@v2
         with:
           context: ./
@@ -43,5 +46,5 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/allison-owen-wedding-client:latest
 
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Image digest (Client)
+        run: echo ${{ steps.docker_build_client.outputs.digest }}
