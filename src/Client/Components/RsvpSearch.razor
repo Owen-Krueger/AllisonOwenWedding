@@ -2,7 +2,7 @@
 @inject HttpClient HttpClient
 
 <Dialog @ref="InfoDialog" Title="Whoops!" ShowOkayButton="true">
-    <p>We couldn't find you! Please try again.</p>
+    <p>@DialogMessage</p>
 </Dialog>
 <EditForm class="rsvp-form" Model="Request" OnValidSubmit="@OnSubmitAsync">
     <DataAnnotationsValidator />
@@ -17,21 +17,31 @@
     public EventCallback<WeddingInvitee> SetWeddingInvitee { get; set; }
     private RsvpSearchRequest Request = new();
     private Dialog InfoDialog;
+    private string DialogMessage;
 
     /// <summary>
     /// Attempt to find the invitee
     /// </summary>
     private async Task OnSubmitAsync()
     {
-        var invitee = await HttpClient.GetFromJsonAsync<WeddingInvitee>($"invitees/{Request.FullName}");
+        try
+        {
+            var invitee = await HttpClient.GetFromJsonAsync<WeddingInvitee>($"invitees/{Request.FullName}");
 
-        if (invitee != null)
-        {
-            await SetWeddingInvitee.InvokeAsync(invitee);
+            if (invitee != null)
+            {
+                await SetWeddingInvitee.InvokeAsync(invitee);
+            }
+            else
+            {
+                DialogMessage = "We couldn't find you! Please try again";
+                InfoDialog.Show();
+            }
         }
-        else
+        catch (Exception)
         {
-            InfoDialog.Show();
+            DialogMessage = "Something went wrong. Please try again.";
+            InfoDialog.Show();   
         }
     }
 }

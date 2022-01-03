@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AllisonOwenWedding.Models
 {
@@ -28,6 +29,7 @@ namespace AllisonOwenWedding.Models
         /// <summary>
         /// The wedding invitee.
         /// </summary>
+        [JsonIgnore]
         public WeddingInvitee WeddingInvitee { get; set; }
     }
 }

@@ -1,4 +1,7 @@
 ﻿@using AllisonOwenWedding.Models
+@using Newtonsoft.Json;
+@inject HttpClient HttpClient
+
 <Dialog @ref="ErrorDialog" Title="Whoops!" ShowOkayButton="true">
     <p>Oh shoot, we failed to submit your RSVP! Please try again. If you continue to have problems, let Owen or Allison know your response manually.</p>
 </Dialog>
@@ -11,13 +14,13 @@
         <option value="@AcceptedResponse.Accept">Accept</option>
         <option value="@AcceptedResponse.Reject">Decline</option>
     </InputSelect>
-    @if (InviteeUpdate.GuestsExpected > 0)
+    @if (WeddingInvitee.GuestsExpected > 0)
     {
         <label for="guests">Additional Guests</label>
         <InputSelect id="guests" class="form-element" disabled="@IsGuestInputDisabled" @bind-Value="InviteeUpdate.GuestsComing">
-            @for(int i = 0; i <= InviteeUpdate.GuestsExpected; i++)
+            @for(int i = 0; i <= WeddingInvitee.GuestsExpected; i++)
             {
-                <option value="@i">+@i</option>
+                <option value="@i" selected="@(i == WeddingInvitee.GuestsComing)">+@i</option>
             }
         </InputSelect>
     }
@@ -27,10 +30,10 @@
 
 @code {
     [Parameter]
-    public WeddingInvitee WeddingInvitee { get; set; }
+    public WeddingInvitee WeddingInvitee { get; set; } = new();
     [Parameter]
     public EventCallback ResetForm { get; set; }
-    private RsvpInviteeUpdate InviteeUpdate;
+    private RsvpInviteeUpdate InviteeUpdate = new();
     private Dialog ErrorDialog;
 
     protected override void OnInitialized()
@@ -62,6 +65,23 @@
 
     private async Task UpdateInviteeAsync()
     {
-        
+        var response = await HttpClient.PutAsJsonAsync("invitees", InviteeUpdate);
+
+        if (response.IsSuccessStatusCode)
+        {
+            bool result = JsonConvert.DeserializeObject<bool>(await response.Content.ReadAsStringAsync());
+            if (result)
+            {
+                await ResetForm.InvokeAsync();
+            }
+            else
+            {
+                ErrorDialog.Show();
+            }
+        }
+        else
+        {
+            ErrorDialog.Show();   
+        }
     }
 }

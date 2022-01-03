@@ -31,7 +31,7 @@ builder.Services.AddScoped(x =>
 );
 
 builder.Services.AddTransient<IEmailService, EmailService>();
-builder.Services.AddDbContext<IWeddingEntities, WeddingEntities>(options => options.UseSqlServer(@builder.Configuration["DataSource"]));
+builder.Services.AddDbContext<IWeddingEntities, WeddingEntities>(options => options.UseSqlServer(builder.Configuration["DataSource"]));
 builder.Services.AddTransient<IWeddingService, WeddingService>();
 
 var app = builder.Build();

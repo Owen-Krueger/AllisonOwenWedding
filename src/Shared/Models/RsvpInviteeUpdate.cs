@@ -3,7 +3,7 @@
     /// <summary>
     /// Update information for the RSVP form.
     /// </summary>
-    public class RsvpInviteeUpdate : WeddingInvitee
+    public class RsvpInviteeUpdate
     {
         /// <summary>
         /// Default constructor.
@@ -15,8 +15,7 @@
         /// </summary>
         public RsvpInviteeUpdate(WeddingInvitee invitee)
         {
-            GuestsExpected = invitee.GuestsExpected;
-            GuestsComing = invitee.GuestsComing;
+            FullName = invitee.InviteeIdentifiers[0].FullName;
 
             if (invitee.Completed)
             {
@@ -29,6 +28,11 @@
         }
 
         /// <summary>
+        /// Invitee full name to update.
+        /// </summary>
+        public string FullName { get; set; }
+
+        /// <summary>
         /// The response in the 'Accepted' field.
         /// </summary>
         public AcceptedResponse RsvpResponse { get; set; }
@@ -36,7 +40,8 @@
         /// <summary>
         /// The number of guests coming. 0 if not accepted.
         /// </summary>
-        public new int GuestsComing { 
+        public int GuestsComing 
+        { 
             get
             {
                 return RsvpResponse == AcceptedResponse.Accept ? _guestsComing : 0;
@@ -55,7 +60,7 @@
         /// <summary>
         /// Whether or not the user accepted the RSVP request.
         /// </summary>
-        public new bool Accepted
+        public bool Accepted
         {
             get
             {
