@@ -67,17 +67,9 @@
     {
         var response = await HttpClient.PutAsJsonAsync("invitees", InviteeUpdate);
 
-        if (response.IsSuccessStatusCode)
+        if (response.IsSuccessStatusCode && JsonConvert.DeserializeObject<bool>(await response.Content.ReadAsStringAsync()))
         {
-            bool result = JsonConvert.DeserializeObject<bool>(await response.Content.ReadAsStringAsync());
-            if (result)
-            {
-                await ResetForm.InvokeAsync();
-            }
-            else
-            {
-                ErrorDialog.Show();
-            }
+            await ResetForm.InvokeAsync();
         }
         else
         {
