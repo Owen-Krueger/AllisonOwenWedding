@@ -1,5 +1,4 @@
 using AllisonOwenWedding.DataAccess;
-using AllisonOwenWedding.Models;
 using AllisonOwenWedding.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Net;

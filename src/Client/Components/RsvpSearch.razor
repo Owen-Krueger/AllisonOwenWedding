@@ -1,4 +1,5 @@
 ﻿@using AllisonOwenWedding.Models
+@using Newtonsoft.Json
 @inject HttpClient HttpClient
 
 <Dialog @ref="InfoDialog" Title="Whoops!" ShowOkayButton="true">
@@ -13,6 +14,8 @@
 </EditForm>
 
 @code {
+    [Inject]
+    public ILogger<RsvpSearch> Logger { get; set; }
     [Parameter]
     public EventCallback<WeddingInvitee> SetWeddingInvitee { get; set; }
     private RsvpSearchRequest Request = new();
@@ -26,7 +29,8 @@
     {
         try
         {
-            var invitee = await HttpClient.GetFromJsonAsync<WeddingInvitee>($"invitees/{Request.FullName}");
+            var response = await HttpClient.GetAsync($"invitees/{Request.FullName}");
+            var invitee = JsonConvert.DeserializeObject<WeddingInvitee>(await response.Content.ReadAsStringAsync());
 
             if (invitee != null)
             {
@@ -37,9 +41,11 @@
                 DialogMessage = "We couldn't find you! Please try again";
                 InfoDialog.Show();
             }
+
         }
-        catch (Exception)
+        catch (Exception e)
         {
+            Logger.LogError($"Exception thrown: {e.Message}");
             DialogMessage = "Something went wrong. Please try again.";
             InfoDialog.Show();   
         }
