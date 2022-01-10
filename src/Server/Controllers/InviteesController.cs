@@ -22,9 +22,10 @@ namespace AllisonOwenWedding.Server.Controllers
         }
 
         [HttpGet("{name}")]
-        public IActionResult GetInvitee([Required(AllowEmptyStrings = false)] string name)
+        public WeddingInvitee GetInvitee([Required(AllowEmptyStrings = false)] string name)
         {
-            return Ok(_weddingService.FindInvitee(name));
+            return(_weddingService.FindInvitee(name));
+
         }
 
         [HttpPut]

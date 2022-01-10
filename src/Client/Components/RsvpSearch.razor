@@ -1,5 +1,4 @@
 ﻿@using AllisonOwenWedding.Models
-@using Newtonsoft.Json
 @inject HttpClient HttpClient
 
 <Dialog @ref="InfoDialog" Title="Whoops!" ShowOkayButton="true">
@@ -29,8 +28,7 @@
     {
         try
         {
-            var response = await HttpClient.GetAsync($"invitees/{Request.FullName}");
-            var invitee = JsonConvert.DeserializeObject<WeddingInvitee>(await response.Content.ReadAsStringAsync());
+            var invitee = await HttpClient.GetFromJsonAsync<WeddingInvitee>($"invitees/{Request.FullName}");
 
             if (invitee != null)
             {
@@ -41,7 +39,6 @@
                 DialogMessage = "We couldn't find you! Please try again";
                 InfoDialog.Show();
             }
-
         }
         catch (Exception e)
         {
