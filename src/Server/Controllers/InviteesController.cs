@@ -35,7 +35,7 @@ namespace AllisonOwenWedding.Server.Controllers
             var invitee = _weddingService.FindInvitee(request.FullName);
             _logger.LogInformation("Updating '{FullName}': Accepted: {Accepted} Guests: {Guests}", fullName, request.Accepted, invitee.GuestsComing);
 
-            bool shouldUpdate = request.Accepted != invitee.Completed || request.GuestsComing != invitee.GuestsComing;
+            bool shouldUpdate = request.Accepted != invitee.Accepted || request.GuestsComing != invitee.GuestsComing;
             invitee.Completed = true;
             invitee.Accepted = request.Accepted;
             invitee.GuestsComing = request.GuestsComing;
