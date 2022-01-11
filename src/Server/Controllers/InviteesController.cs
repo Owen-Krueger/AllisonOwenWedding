@@ -35,16 +35,21 @@ namespace AllisonOwenWedding.Server.Controllers
             var invitee = _weddingService.FindInvitee(request.FullName);
             _logger.LogInformation("Updating '{FullName}': Accepted: {Accepted} Guests: {Guests}", fullName, request.Accepted, invitee.GuestsComing);
 
+            bool shouldUpdate = request.Accepted != invitee.Completed || request.GuestsComing != invitee.GuestsComing;
             invitee.Completed = true;
             invitee.Accepted = request.Accepted;
             invitee.GuestsComing = request.GuestsComing;
 
             var databasePolicy = Policy.HandleResult<bool>(x => !x).RetryAsync(3);
-            bool databaseResult = await databasePolicy.ExecuteAsync(() => _weddingService.UpdateInviteeAsync());
+            bool databaseResult = true;
+            bool emailResult = true;
+            if (shouldUpdate)
+            {
+                databaseResult = await databasePolicy.ExecuteAsync(() => _weddingService.UpdateInviteeAsync());
+                emailResult = _emailService.SendUpdateEmail(fullName, request.Accepted, invitee.GuestsComing);
+            }
 
-            bool emailResult = _emailService.SendUpdateEmail(fullName, request.Accepted, invitee.GuestsComing);
-
-            if (!databaseResult && !emailResult)
+            if (shouldUpdate && !databaseResult && !emailResult)
             {
                 _logger.LogError("Failed to update database and send email update.");
                 return false;

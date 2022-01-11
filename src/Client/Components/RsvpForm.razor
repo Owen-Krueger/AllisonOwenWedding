@@ -25,14 +25,14 @@
         </InputSelect>
     }
     <input class="form-element button-input submit-input" type="submit" disabled="@IsSubmitButtonDisabled" value="Submit" />
-    <input class="form-element button-input" type="reset" @onclick="async () => await ResetForm.InvokeAsync()" value="Cancel" />
+    <input class="form-element button-input" type="reset" @onclick="async () => await ResetForm.InvokeAsync(false)" value="Cancel" />
 </EditForm>
 
 @code {
     [Parameter]
     public WeddingInvitee WeddingInvitee { get; set; } = new();
     [Parameter]
-    public EventCallback ResetForm { get; set; }
+    public EventCallback<bool> ResetForm { get; set; }
     private RsvpInviteeUpdate InviteeUpdate = new();
     private Dialog ErrorDialog;
 
@@ -69,7 +69,7 @@
 
         if (response.IsSuccessStatusCode && JsonConvert.DeserializeObject<bool>(await response.Content.ReadAsStringAsync()))
         {
-            await ResetForm.InvokeAsync();
+            await ResetForm.InvokeAsync(true);
         }
         else
         {

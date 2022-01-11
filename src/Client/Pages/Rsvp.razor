@@ -2,6 +2,9 @@
 @using AllisonOwenWedding.Models
 @page "/rsvp"
 
+<Dialog @ref="InfoDialog" Title="Thanks!" ShowOkayButton="true">
+    <p>We've received your reservation!</p>
+</Dialog>
 @if (WeddingInvitee == null)
 {
     <RsvpSearch SetWeddingInvitee="SetWeddingInvitee" />
@@ -13,6 +16,7 @@ else
 
 @code {
     private WeddingInvitee? WeddingInvitee = null;
+    private Dialog InfoDialog;
 
     /// <summary>
     /// Sets the invitee
@@ -26,9 +30,13 @@ else
     /// <summary>
     /// Resets the request form
     /// </summary>
-    private void ResetForm()
+    private void ResetForm(bool rsvpReceived)
     {
         WeddingInvitee = null;
+        if (rsvpReceived)
+        {
+            InfoDialog.Show();
+        }
         StateHasChanged();
     }
 }
