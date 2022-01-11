@@ -2,6 +2,11 @@
 @inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
 
+@* 
+    For some reason, the first h1 element is focused on page load. To get around 
+    this, we have a hidden element to take focus. Hacky, but it works!
+*@
+<h1 style="display: none">#Workaround</h1>
 <header class="header-container">
     <div class="header-content">
         <h1>Allison & Owen</h1>
