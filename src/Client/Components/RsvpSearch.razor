@@ -1,4 +1,5 @@
 ﻿@using AllisonOwenWedding.Models
+@using Newtonsoft.Json
 @inject HttpClient HttpClient
 
 <Dialog @ref="InfoDialog" Title="Whoops!" ShowOkayButton="true">
@@ -28,7 +29,8 @@
     {
         try
         {
-            var invitee = await HttpClient.GetFromJsonAsync<WeddingInvitee>($"invitees/{Request.FullName}");
+            var response = await HttpClient.GetAsync($"invitees/{Request.FullName}");
+            var invitee = JsonConvert.DeserializeObject<WeddingInvitee>(await response.Content.ReadAsStringAsync());
 
             if (invitee != null)
             {
