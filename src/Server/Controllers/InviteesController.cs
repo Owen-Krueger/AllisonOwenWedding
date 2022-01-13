@@ -33,7 +33,7 @@ namespace AllisonOwenWedding.Server.Controllers
         {
             string fullName = request.FullName;
             var invitee = _weddingService.FindInvitee(request.FullName);
-            _logger.LogInformation("Updating '{FullName}': Accepted: {Accepted} Guests: {Guests}", fullName, request.Accepted, invitee.GuestsComing);
+            _logger.LogInformation("Updating '{FullName}'|Previous Accepted: {PrevAccepted}|Previous Guests: {PrevGuests}|New Accepted: {NewAccepted}|New Guests: {NewGuests}", fullName, invitee.Accepted, invitee.GuestsComing, request.Accepted, request.GuestsComing);
 
             bool shouldUpdate = request.Accepted != invitee.Accepted || request.GuestsComing != invitee.GuestsComing;
             invitee.Completed = true;
@@ -42,14 +42,13 @@ namespace AllisonOwenWedding.Server.Controllers
 
             var databasePolicy = Policy.HandleResult<bool>(x => !x).RetryAsync(3);
             bool databaseResult = true;
-            bool emailResult = true;
             if (shouldUpdate)
             {
                 databaseResult = await databasePolicy.ExecuteAsync(() => _weddingService.UpdateInviteeAsync());
-                emailResult = _emailService.SendUpdateEmail(fullName, request.Accepted, invitee.GuestsComing);
             }
+            bool emailResult = _emailService.SendUpdateEmail(fullName, request.Accepted, invitee.GuestsComing);
 
-            if (shouldUpdate && !databaseResult && !emailResult)
+            if ((shouldUpdate && !databaseResult) && !emailResult)
             {
                 _logger.LogError("Failed to update database and send email update.");
                 return false;

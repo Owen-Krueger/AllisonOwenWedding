@@ -36,6 +36,12 @@ namespace AllisonOwenWedding.Models
         public int GuestsComing { get; set; }
 
         /// <summary>
+        /// Full name of the person filling out the form.
+        /// </summary>
+        [NotMapped]
+        public string FullName { get; set; }
+
+        /// <summary>
         /// The list of identifiers for this invitee.
         /// </summary>
         public List<InviteeIdentifier> InviteeIdentifiers { get; set; } = new();

@@ -15,7 +15,7 @@
         /// </summary>
         public RsvpInviteeUpdate(WeddingInvitee invitee)
         {
-            FullName = invitee.InviteeIdentifiers[0].FullName;
+            FullName = invitee.FullName;
 
             if (invitee.Completed)
             {

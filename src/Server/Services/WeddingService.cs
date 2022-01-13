@@ -33,6 +33,11 @@ namespace AllisonOwenWedding.Services
                 .Include(x => x.InviteeIdentifiers)
                 .FirstOrDefault();
 
+            if (invitee != null)
+            {
+                invitee.FullName = fullName;
+            }
+
             return invitee;
         }
 
