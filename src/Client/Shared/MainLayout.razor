@@ -11,7 +11,7 @@
     <div class="header-content">
         <h1>Allison & Owen</h1>
         <p>Februrary 19, 2022 | Braham, MN</p>
-        <p>@DaysTillWedding() days until the wedding!</p>
+        <p>@DaysTillWeddingText()</p>
     </div>
 </header>
     <div class="nav-bar">
@@ -37,10 +37,20 @@
     /// <summary>
     /// Gets the number of days until the wedding
     /// </summary>
-    private static int DaysTillWedding()
+    private static string DaysTillWeddingText()
     {
+        string daysTillWeddingText = "The wedding already happened... Why are you here?";
         DateTime weddingDate = new(2022, 2, 19);
-        return (weddingDate - DateTime.Today).Days;
+        if (DateTime.Today < weddingDate)
+        {
+            daysTillWeddingText = $"{(weddingDate - DateTime.Today).Days} days until the wedding!";
+        }
+        else if (DateTime.Today == weddingDate)
+        {
+            daysTillWeddingText = "Today is the wedding!";
+        }
+
+        return daysTillWeddingText;
     }
 
     /// <summary>
