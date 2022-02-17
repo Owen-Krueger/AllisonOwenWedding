@@ -6,12 +6,13 @@
     <p>@DialogMessage</p>
 </Dialog>
 <EditForm class="rsvp-form" Model="Request" OnValidSubmit="@OnSubmitAsync">
-    <p>Search your name below to fill out the response for you and your family! Please note that only one person per family needs to fill this out.</p>
+    @*<p>Search your name below to fill out the response for you and your family! Please note that only one person per family needs to fill this out.</p>*@
+    <p>The guest list has been finalized. If you have questions or want to update your RSVP, please message Allison or Owen.</p>
     <DataAnnotationsValidator />
     <ValidationSummary />
     <label for="fullName">Full Name</label>
-    <InputText id="fullName" class="form-element text-input" @bind-Value="Request.FullName" placeholder="John Doe" />
-    <input type="submit" class="form-element button-input submit-input" value="Submit" />
+    <InputText disabled id="fullName" class="form-element text-input" @bind-Value="Request.FullName" placeholder="John Doe" />
+    <input disabled type="submit" class="form-element button-input submit-input" value="Submit" />
 </EditForm>
 
 @code {
@@ -35,7 +36,7 @@
 
             if (invitee != null)
             {
-                await SetWeddingInvitee.InvokeAsync(invitee);
+                //await SetWeddingInvitee.InvokeAsync(invitee);
             }
             else
             {
