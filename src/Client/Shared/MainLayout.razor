@@ -39,15 +39,21 @@
     /// </summary>
     private static string DaysTillWeddingText()
     {
-        string daysTillWeddingText = "The wedding already happened... Why are you here?";
+        string daysTillWeddingText;
         DateTime weddingDate = new(2022, 2, 19);
-        if (DateTime.Today < weddingDate)
+        int daysTillWedding = (weddingDate - DateTime.Today).Days;
+        
+        if (daysTillWedding > 0)
         {
-            daysTillWeddingText = $"{(weddingDate - DateTime.Today).Days} days until the wedding!";
+            daysTillWeddingText = $"{daysTillWedding} day{(daysTillWedding > 1 ? "s" : "")} until the wedding!";
         }
-        else if (DateTime.Today == weddingDate)
+        else if (daysTillWedding == 0)
         {
             daysTillWeddingText = "Today is the wedding!";
+        }
+        else
+        {
+            daysTillWeddingText = "The wedding already happened... Why are you here?";   
         }
 
         return daysTillWeddingText;
